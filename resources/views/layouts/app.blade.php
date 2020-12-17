@@ -86,3 +86,5 @@
     @stack('script')
 </body>
 </html>
+
+</script>
