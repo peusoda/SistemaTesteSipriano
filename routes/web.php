@@ -16,3 +16,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'form'], function(){
+    Route::get('/show', [
+        'as' => 'form.show',
+        'uses' => 'CursosController@show'
+    ]);
+    Route::get('/update/{id}', [
+        'as' => 'form.update',
+        'uses' => 'CursosController@update'
+    ]);
+    Route::put('/updateConfirm', [
+        'as' => 'form.updateConfirm',
+        'uses' => 'CursosController@updateConf'
+    ]);
+    Route::get('/delete/{id}', [
+        'as' => 'form.delete',
+        'uses' => 'CursosController@delete'
+    ]);
+});
